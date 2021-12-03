@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 @RestController
 @AllArgsConstructor
@@ -15,8 +17,8 @@ public class BookController {
 	private final BookRepository bookRepository;
 	private final PageRepository pageRepository;
 
-	@GetMapping("/books/{ibsn}")
-	public Book findBookByIbsn(@PathVariable String ibsn) {
-		return bookRepository.findByIsbn(ibsn);
+	@GetMapping("/books/{isbn}")
+	public Mono<Book> findBookByIbsn(@PathVariable String isbn) {
+		return Mono.fromCallable(() -> bookRepository.findByIsbn(isbn)).subscribeOn(Schedulers.boundedElastic());
 	}
 }
