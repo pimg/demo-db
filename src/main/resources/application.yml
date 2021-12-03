@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: demo-db
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432
+    name: dbtest
+    properties:
+      schema: public
+    username: admin
+    password: secret
+    initialization-mode: always
+server:
+  port: 9090
