@@ -1,5 +1,6 @@
-
-
+# Data-JPA
+This repository uses Spring data JPA with a non-reactive controller to fetch records from two tables 
+using a one-to-many relationship.
 
 ## database initialization 
 In the branch data-JPA the database is initialized, the tables created and the record inserted.
