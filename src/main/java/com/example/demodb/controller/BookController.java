@@ -15,7 +15,6 @@ import static io.smallrye.mutiny.converters.uni.UniReactorConverters.toMono;
 public class BookController {
 
 	private final BookRepository bookRepository;
-//	private final PageRepository pageRepository;
 
 	@GetMapping("/books/{isbn}")
 	public Mono<Book> findBookByIbsn(@PathVariable String isbn) {
