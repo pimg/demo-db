@@ -1,10 +1,10 @@
 package com.example.demodb.repositories;
 
 import com.example.demodb.domains.Book;
-import org.springframework.data.repository.CrudRepository;
+import io.smallrye.mutiny.Uni;
 
-public interface BookRepository extends CrudRepository<Book, Long> {
+public interface BookRepository  {
 
-	Book findByIsbn(String isbn);
+	Uni<Book> findByIsbn(String isbn);
 
 }
