@@ -4,7 +4,10 @@ import com.example.demodb.domains.Book;
 import com.example.demodb.repositories.BookRepository;
 import io.smallrye.mutiny.Uni;
 import lombok.AllArgsConstructor;
-import org.hibernate.reactive.mutiny.Mutiny;
+
+import static org.hibernate.reactive.mutiny.Mutiny.SessionFactory;
+import static org.hibernate.reactive.mutiny.Mutiny.fetch;
+
 import org.springframework.stereotype.Component;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,7 +18,7 @@ import javax.persistence.criteria.Root;
 @AllArgsConstructor
 public class BookRepositoryImpl implements BookRepository {
 
-	private final Mutiny.SessionFactory sessionFactory;
+	private final SessionFactory sessionFactory;
 
 	@Override
 	public Uni<Book> findByIsbn(String isbn) {
@@ -25,6 +28,10 @@ public class BookRepositoryImpl implements BookRepository {
 		Root<Book> root = query.from(Book.class);
 		query.where(criteriaBuilder.equal(root.get("isbn"), isbn));
 
-		return sessionFactory.withSession(session -> session.createQuery(query).getSingleResult());
+		return sessionFactory.withSession(session -> session
+			.createQuery(query)
+			.getSingleResult()
+			.onItem()
+			.call(book -> fetch(book.getPages())));
 	}
 }
