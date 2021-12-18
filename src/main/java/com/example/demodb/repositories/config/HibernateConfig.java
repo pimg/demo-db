@@ -2,15 +2,12 @@ package com.example.demodb.repositories.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import static javax.persistence.Persistence.createEntityManagerFactory;
 import static org.hibernate.reactive.mutiny.Mutiny.SessionFactory;
 
 @Configuration
-@EnableTransactionManagement
 public class HibernateConfig {
-
 
 	@Bean
 	public SessionFactory sessionFactory() {
