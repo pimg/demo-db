@@ -1,10 +1,10 @@
 package com.example.demodb.repositories;
 
 import com.example.demodb.domains.Book;
-import io.smallrye.mutiny.Uni;
+import reactor.core.publisher.Mono;
 
 public interface BookRepository  {
 
-	Uni<Book> findByIsbn(String isbn);
+	Mono<Book> findByIsbn(String isbn);
 
 }

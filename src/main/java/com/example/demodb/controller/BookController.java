@@ -18,6 +18,6 @@ public class BookController {
 
 	@GetMapping("/books/{isbn}")
 	public Mono<Book> findBookByIbsn(@PathVariable String isbn) {
-		return bookRepository.findByIsbn(isbn).convert().with(toMono());
+		return bookRepository.findByIsbn(isbn);
 	}
 }
