@@ -3,12 +3,11 @@ package com.example.demodb.domains;
 import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
-import java.util.Set;
-
 @SuperBuilder
 @Getter
-public class Book extends BookSummary {
+public class BookSummary {
 
-	private final Set<Page> pages;
-
+	private final String title;
+	private final String author;
+	private final String isbn;
 }

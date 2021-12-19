@@ -1,6 +1,6 @@
 package com.example.demodb.repositories.impl;
 
-import com.example.demodb.domains.Book;
+import com.example.demodb.repositories.entities.Book;
 import com.example.demodb.repositories.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -33,6 +33,21 @@ public class BookRepositoryImpl implements BookRepository {
 			.getSingleResult()
 			.onItem()
 			.call(book -> fetch(book.getPages())))
+			.convert().with(toMono());
+	}
+
+	@Override
+	public Mono<Book> findSummaryByIsbn(String isbn) {
+		CriteriaBuilder criteriaBuilder = sessionFactory.getCriteriaBuilder();
+		CriteriaQuery<Book> query = criteriaBuilder.createQuery(Book.class);
+
+		Root<Book> root = query.from(Book.class);
+		query.where(criteriaBuilder.equal(root.get("isbn"), isbn));
+
+		return sessionFactory.withSession(session -> session
+				.createQuery(query)
+				.getSingleResult()
+			)
 			.convert().with(toMono());
 	}
 }
