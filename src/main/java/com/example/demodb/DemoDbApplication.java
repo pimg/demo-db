@@ -11,5 +11,4 @@ public class DemoDbApplication {
 		SpringApplication.run(DemoDbApplication.class, args);
 	}
 
-
 }
