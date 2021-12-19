@@ -1,4 +1,4 @@
-package com.example.demodb.repositories.config;
+package com.example.demodb.persistence.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

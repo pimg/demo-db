@@ -1,7 +1,7 @@
-package com.example.demodb.repositories.impl;
+package com.example.demodb.persistence.repositories.impl;
 
-import com.example.demodb.repositories.entities.Book;
-import com.example.demodb.repositories.BookRepository;
+import com.example.demodb.persistence.entities.Book;
+import com.example.demodb.persistence.repositories.BookRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;

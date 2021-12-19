@@ -1,6 +1,6 @@
-package com.example.demodb.repositories;
+package com.example.demodb.persistence.repositories;
 
-import com.example.demodb.repositories.entities.Book;
+import com.example.demodb.persistence.entities.Book;
 import reactor.core.publisher.Mono;
 
 public interface BookRepository  {

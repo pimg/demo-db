@@ -3,7 +3,7 @@ package com.example.demodb.service.impl;
 import com.example.demodb.domains.Book;
 import com.example.demodb.domains.BookSummary;
 import com.example.demodb.domains.Page;
-import com.example.demodb.repositories.BookRepository;
+import com.example.demodb.persistence.repositories.BookRepository;
 import com.example.demodb.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
